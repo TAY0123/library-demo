@@ -53,16 +53,16 @@ export const Navbar = () => {
         items={searchResult}
         label="Search"
         onInputChange={handleSearchInputChange}
-        onSelectionChange={(_value) => {}}
+        onSelectionChange={(value) => {
+          if (value == null) return;
+          window.location.href = `/book/${value}`;
+        }}
       >
         {(result) => (
           <AutocompleteItem
             key={result._id}
             description={result.author}
             title={result.name}
-            onClick={() => {
-              window.location.href = `/book/${result._id}`;
-            }}
           />
         )}
       </Autocomplete>
